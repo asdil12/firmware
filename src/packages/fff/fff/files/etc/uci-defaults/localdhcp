@@ -1,0 +1,18 @@
+#!/bin/sh
+>/etc/config/dhcp
+
+uci batch <<EOF
+set dhcp.odhcpd=odhcpd
+set dhcp.odhcpd.maindhcp=0
+set dhcp.odhcpd.leasefile=/tmp/hosts/odhcpd
+set dhcp.odhcpd.leasetrigger=/usr/sbin/odhcpd-update
+set dhcp.local=dhcp
+set dhcp.local.interface=mesh
+set dhcp.local.ra=server
+set dhcp.local.dhcpv6=server
+set dhcp.local.dhcpv4=disabled
+set dhcp.local.ndp=disabled
+set dhcp.local.ra_default=0
+set dhcp.local.ra_preference=low
+commit dhcp
+EOF
