@@ -4,23 +4,26 @@
 <head>
 <title>Einstellungen</title>
 <meta charset="utf-8"/>
-<link rel="stylesheet" type="text/css" href="style.css" />
 <script src="shared.js"></script>
 <script src="settings.js"></script>
 </head>
 <body onload="init();">
 
+<div class="content">
+<form class="pure-form pure-form-aligned" onsubmit="save_data(); return false;">
 <fieldset>
 	<legend>Allgemeine Einstellungen</legend>
-	<span id="general"></span>
+	<div id="general"></div>
 </fieldset>
 <fieldset>
 	<legend>Bandbreitenkontrolle</legend>
-	<span id="traffic"></span>
-	<div><br />Die f&#252;r das Freifunknetz beanspruchte Internet-Bandbreite am WAN kann hier begrenzt werden.</div>
+	<div id="traffic"></div>
+	<div>Die f&uuml;r das Freifunknetz beanspruchte Internet-Bandbreite am WAN kann hier begrenzt werden.<br /><br /></div>
 </fieldset>
 
-<button type="button" onclick="save_data()">Speichern</button>
+<input type="submit" class="pure-button pure-button-primary" value="Speichern" />
+</form>
+</div>
 
 </body>
 </html>

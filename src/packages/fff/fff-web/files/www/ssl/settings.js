@@ -53,27 +53,21 @@ function appendSetting(p, path, value, mode)
 	switch(name)
 	{
 	case "latitude":
-		b = append_input(p, "GPS-Koordinaten Latitude", id, value);
+		b = append_input(p, "GPS Breitengrad", id, value);
 		b.lastChild.placeholder = "52.02713078";
 		addInputCheck(b.lastChild, /^$|^\d{1,3}\.\d{1,8}$/, "Ung\xfcltige Eingabe. Bitte nur maximal 8 Nachkommastellen und keine Kommas verwenden.");
 		addHelpText(b, "Die Latitude Koordinate dieses Knotens auf der Freifunk-Karte (z.B. \"52.02713078\").");
-		var map_button = append_button(b, "Position auf Karte anzeigen / setzen", function() {
-			window.open('/map.html', '_blank', 'location=0,status=0,scrollbars=1,width=400,height=300')
-		});
-		b.style["position"] = "relative";
-		map_button.style["position"] = "absolute";
-		map_button.style["height"] = "44px";
+		var map_button = append_button(b, "Position auf Karte anzeigen / setzen", function() {window.open('/map.html', '_blank', 'location=0,status=0,scrollbars=1,width=400,height=300')});
 		map_button.style["margin-left"] = "5px";
-		map_button.style["z-index"] = "-1";
 		break;
 	case "longitude":
-		b = append_input(p, "GPS-Koordinaten Longitude", id, value);
+		b = append_input(p, "GPS L&auml;ngengrad", id, value);
 		b.lastChild.placeholder = "8.52829987";
 		addInputCheck(b.lastChild, /^$|^\d{1,3}\.\d{1,8}$/, "Ung\xfcltige Eingabe. Bitte nur maximal 8 Nachkommastellen und keine Kommas verwenden.");
 		addHelpText(b, "Die Longitude Koordinate dieses Knotens auf der Freifunk-Karte (z.B. \"8.52829987\").");
 		break;
 	case "position_comment":
-		b = append_input(p, "Standort Beschreibung", id, value);
+		b = append_input(p, "Standortbeschreibung", id, value);
 		b.lastChild.placeholder = "Am Antennenmast";
 		addInputCheck(b.lastChild, /^$|^[\-\^'\w\.\:\[\]\(\)\/ &@\+\u0080-\u00FF]{0,255}$/, "Ung\xfcltige Eingabe.");
 		addHelpText(b, "Eine genauere Beschreibung zum Standort");
@@ -83,9 +77,10 @@ function appendSetting(p, path, value, mode)
 		b.lastChild.placeholder = "MeinRouter";
 		addInputCheck(b.lastChild, /^$|^[\-\^'\w\.\:\[\]\(\)\/ &@\+\u0080-\u00FF]{0,32}$/, "Ung\xfcltige Eingabe.");
 		addHelpText(b, "Der Name dieses Knotens auf der Freifunk-Karte.");
+		document.getElementsByTagName("title")[0].innerHTML = "FFF Router :: " + value;
 		break;
 	case "description":
-		b = append_input(p, "Knotenbeschreibung", id, value);
+		b = append_textarea(p, "Knotenbeschreibung", id, value);
 		b.lastChild.placeholder = "In einer grauen Kiste versteckt";
 		addInputCheck(b.lastChild, /^$|^[\-\^'\w\.\:\[\]\(\)\/ &@\+\u0080-\u00FF]{0,255}$/, "Ung\xfcltige Eingabe.");
 		addHelpText(b, "Beschreibung dieses Knotens.");
@@ -98,7 +93,7 @@ function appendSetting(p, path, value, mode)
 		break;
 	case "enabled":
 		if(cfg == "simple-tc") {
-			b = append_radio(p, "Bandbreitenkontrolle", id, value, [["An", "1"], ["Aus", "0"]]);
+			b = append_radio(p, "Bandbreitenkontrolle", id, value, [["An", "1"], ["Aus", "0"]], true);
 			addHelpText(b, "Bandbreitenkontrolle f\xfcr den Upload-/Download \xfcber das Freifunknetz \xfcber den eigenen Internetanschluss.");
 		}
 		break;
@@ -117,6 +112,7 @@ function appendSetting(p, path, value, mode)
 	}
 
 	b.id = id; //needed for updateFrom
+	addClass(b, "pure-control-group");
 	b.onchange = function() {
 		updateFrom(b);
 	};

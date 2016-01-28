@@ -4,23 +4,26 @@
 <head>
 <title>Wifiscan</title>
 <meta charset="utf-8"/>
-<link rel="stylesheet" type="text/css" href="style.css" />
 <script src="shared.js"></script>
 <script src="wifiscan.js"></script>
 </head>
 <body onload="init();">
 
+<div class="content">
+<form class="pure-form pure-form-aligned">
 <fieldset id="wifiscan">
 	<legend>Wifi Scan</legend>
 	<div>
 		<select id="wifiscan_selection"></select>
-		<button type="button" onclick="wifi_scan()">Scan starten</button>
+		<button type="button" class="pure-button" onclick="wifi_scan()">Scan starten</button>
 	</div>
-	<table id="wifiscan_table" style="display: none">
-		<tr><th>Name</th><th>Kanal</th><th>Signal</th><th>Typ</th></tr>
+	<table id="wifiscan_table" style="display: none; margin-top: 1em;" class="pure-table pure-table-striped">
+		<thead><tr><th>Name</th><th>Kanal</th><th>Signal</th><th>Typ</th></tr></thead>
 		<tbody id="wifiscan_tbody"></tbody>
 	</table>
 </fieldset>
+</form>
+</div>
 
 </body>
 </html>

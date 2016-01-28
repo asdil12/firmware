@@ -39,7 +39,7 @@ if [ -n "$position_comment" ]; then
 	echo "				<li><a href='#'>${position_comment}</a></li>"
 fi
 %>
-				<li><form action="https://<% echo -n "$HTTP_HOST" %>"><button type="submit" class="pure-button">Login</button></form></li>
+				<li><form action="https://<% echo -n "$HTTP_HOST" %>"><button type="submit" class="pure-button pure-button-primary">Login</button></form></li>
 			</ul>
 		</div>
 	</div>

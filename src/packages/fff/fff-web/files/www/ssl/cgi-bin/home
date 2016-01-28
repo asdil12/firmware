@@ -43,6 +43,7 @@ print 'date' "$(date)"
 
 if [ $(sockread /var/run/fastd.status < /dev/null 2> /dev/null | grep  -c '"connection": {') -gt 0 ]; then
 	print 'has_vpn' 'Ja'
+	printList 'fastd_peer' "$(cd /etc/fastd/fff/peers/; ls)"
 else
 	print 'has_vpn' 'Nein'
 fi

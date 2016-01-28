@@ -4,18 +4,19 @@
 <head>
 <title>Upgrade</title>
 <meta charset="utf-8"/>
-<link rel="stylesheet" type="text/css" href="style.css" />
 <script src="shared.js"></script>
 <script src="upgrade.js"></script>
 </head>
 <body onload="init();">
 
+<div class="content">
+<div class="pure-form pure-form-aligned">
 <fieldset>
 	<legend>Router Zur&#252;cksetzen</legend>
 	<div>
-		<button type="button" onclick="restore_firmware()">Zur&#252;cksetzen</button>
+		<button type="button" class="pure-button pure-button-primary" onclick="restore_firmware()">Zur&#252;cksetzen</button>
 	</div>
-	<div><br />Alle Einstellungen werden zur&#252;ckgesetzt und der Router startet neu.</div>
+	<div>Alle Einstellungen werden zur&#252;ckgesetzt und der Router startet neu.</div>
 </fieldset>
 <fieldset>
 	<legend>Manuelles Update</legend>
@@ -25,8 +26,8 @@
 		<label>
 			<input type="file" id="import_file" name="firmware" onchange="$('selected_image').innerHTML=this.value.replace(/^.*[\\\/](.*)$/, '$1');" style="visibility:hidden;position:absolute;top:-50;left:-50"/>
 			<input type="hidden" name="func" value="apply_firmware" />
-			<button type="button" onclick="$('import_file').click()">Image Ausw&auml;hlen</button>
-			<button type="submit">Senden</button>
+			<button type="button" class="pure-button" onclick="$('import_file').click()">Image Ausw&auml;hlen</button>
+			<button type="submit" class="pure-button pure-button-primary">Senden</button>
 		</label>
 		<div>
 			<input type="checkbox" name="keep_config" value="yes" />
@@ -34,8 +35,10 @@
 		</div>
 	</div>
 	</form>
-	<div><br />Hier kann ein Freifunk-Image verwendet werden (*-sysupgrade.bin) oder die Firmware des Routerherstellers.</div>
+	<div>Hier kann ein Freifunk-Image verwendet werden (*-sysupgrade.bin) oder die Firmware des Routerherstellers.</div>
 </fieldset>
+</div>
+</div>
 
 
 </body>

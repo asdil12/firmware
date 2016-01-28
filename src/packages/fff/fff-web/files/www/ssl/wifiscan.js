@@ -46,7 +46,7 @@ function wifi_scan()
 		}
 
 		var table = $('wifiscan_table');
-		show(table);
+		table.style["display"] = "table";
 	});
 }
 

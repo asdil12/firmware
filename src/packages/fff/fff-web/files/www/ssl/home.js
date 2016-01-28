@@ -23,6 +23,10 @@ function init() {
 				continue;
 			}
 
+			if (key == 'name') {
+				document.getElementsByTagName("title")[0].innerHTML = "FFF Router :: " + value;
+			}
+
 			//for traffic
 			if(/_bytes$/.test(key)) {
 				value = formatSize(value);

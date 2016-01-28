@@ -53,21 +53,7 @@ function replaceItem(str, old_item, new_item)
 }
 
 function addHelpText(elem, text) {
-	var help = $("help");
-
-	if(help) {
-		elem.onmouseover = function(e) {
-			help.style.top = (e.clientY-20)+"px";
-			help.style.left = (e.clientX+80)+"px";
-			help.innerHTML = text;
-			show(help);
-		};
-
-		elem.onmouseout = function() {
-			help.innerHTML = "";
-			hide(help);
-		};
-	}
+	elem.title = text;
 }
 
 //to config file syntax
@@ -261,6 +247,8 @@ function collect_inputs(p, obj)
 {
 	if(p.tagName == "SELECT")
 		obj[p.name] = p.value;
+	if(p.tagName == "TEXTAREA")
+		obj[p.name] = p.value;
 	if(p.tagName == "INPUT")
 		if(p.type == "text" || p.type == "password" || (p.type == "radio" && p.checked))
 			obj[p.name] = p.value
@@ -296,6 +284,7 @@ function append_section(parent, title, id)
 function append_button(parent, text, onclick)
 {
 	var button = append(parent, 'button');
+	addClass(button, "pure-button");
 	button.type = 'button';
 	button.innerHTML = text;
 	button.onclick = onclick;
@@ -370,6 +359,27 @@ function append_input(parent, title, name, value)
 	input.value = (typeof value == "undefined") ? "" : value;
 	input.name = name;
 	input.type = "text";
+	addClass(input, "pure-input-1-3");
+
+	div.appendChild(label);
+	div.appendChild(input);
+
+	return div;
+}
+
+//append a textarea field
+//e.g. append_input(parent, "Name", "name_string", "MyName")
+function append_textarea(parent, title, name, value)
+{
+	var div = append(parent, 'div');
+	var label = create('label');
+	var input = create('textarea');
+
+	label.innerHTML = title + ":";
+	input.value = (typeof value == "undefined") ? "" : value;
+	input.name = name;
+	input.type = "text";
+	addClass(input, "pure-input-1-3");
 
 	div.appendChild(label);
 	div.appendChild(input);
@@ -378,9 +388,9 @@ function append_input(parent, title, name, value)
 }
 
 //append a radio field
-//e.g. append_radio(parent, "Enabled", "enabled", 0, [["Yes", 1], ["No", 0])
-function append_radio(parent, title, name, selected, choices) {
-	return _selection("radio", parent, title, name, [selected], choices);
+//e.g. append_radio(parent, "Enabled", "enabled", 0, [["Yes", 1], ["No", 0], true)
+function append_radio(parent, title, name, selected, choices, inline) {
+	return _selection("radio", parent, title, name, [selected], choices, inline);
 }
 
 //append a checkbox field
@@ -389,7 +399,7 @@ function append_check(parent, title, name, selected, choices) {
 	return _selection("checkbox", parent, title, name, selected, choices);
 }
 
-function _selection(type, parent, title, name, selected, choices)
+function _selection(type, parent, title, name, selected, choices, inline)
 {
 	var p = append(parent, 'div');
 	var label = append(p, 'label');
@@ -405,7 +415,7 @@ function _selection(type, parent, title, name, selected, choices)
 		var choice_value = "" + (s ? choices[i] : choices[i][1]);
 		var choice_help = s ? undefined : choices[i][2];
 
-		var div = append(span, 'div');
+		var div = append(span, (inline)?'span':'div');
 		var input = append(div, 'input');
 		var label = append(div, 'label');
 

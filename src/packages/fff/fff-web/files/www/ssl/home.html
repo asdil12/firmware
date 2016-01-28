@@ -4,51 +4,63 @@
 <head>
 <title>Home</title>
 <meta charset="utf-8"/>
-<link rel="stylesheet" type="text/css" href="style.css" />
 <script src="shared.js"></script>
 <script src="home.js"></script>
 </head>
 <body onload="init();">
 
+<div class="content">
+<div class="pure-form pure-form-aligned">
 <fieldset>
 <legend id="system">System</legend>
-<div><label>Name: </label><span id="name">?</span></div>
-<div><label>Modell: </label><span id="model">?</span></div>
-<div><label>MAC-Adresse: </label><span id="mac">?</span></div>
-<div><label>Bekannte Knoten: </label><span id="node_count">?</span></div>
-<div><label>Nachbarknoten: </label><span id="neigh_count">?</span></div>
-<div><label>VPN aktiv: </label><span id="has_vpn">?</span></div>
-<div><label>Laufzeit: </label><span id="uptime">?</span></div>
-<div><label>Auslastung: </label><span id="load">?</span></div>
-<div><label>System: </label><span id="uname">?</span></div>
-<div><label>Uhrzeit: </label><span id="date">?</span></div>
+<table class="formtable">
+<tr><th>Name:</th><td id="name">?</td></tr>
+<tr><th>Modell:</th><td id="model">?</td></tr>
+<tr><th>MAC-Adresse:</th><td id="mac">?</td></tr>
+<tr><th>Bekannte Knoten:</th><td id="node_count">?</td></tr>
+<tr><th>Nachbarknoten:</th><td id="neigh_count">?</td></tr>
+<tr><th>VPN aktiv:</th><td id="has_vpn">?</td></tr>
+<tr><th>Laufzeit:</th><td id="uptime">?</td></tr>
+<tr><th>Auslastung:</th><td id="load">?</td></tr>
+<tr><th>System:</th><td id="uname">?</td></tr>
+<tr><th>Uhrzeit:</th><td id="date">?</td></tr>
+<tr><th>VPN Gateways:</th><td id="fastd_peer">keine</td></tr>
+</table>
 </fieldset>
 
 <fieldset>
 <legend id="freifunk">Netz: Freifunk</legend>
-<div><label>Nutzer: </label><span id="freifunk_user_count">?</span></div>
-<div><label>Empfangen: </label><span id="freifunk_rx_bytes">?</span> </div>
-<div><label>Gesendet: </label><span id="freifunk_tx_bytes">?</span></div>
-<div><label>IPv4 Adressen: </label><span id="freifunk_addr4">?</span></div>
-<div><label>IPv6 Adressen: </label><span id="freifunk_addr6">?</span></div>
+<table class="formtable">
+<tr><th>Nutzer:</th><td id="freifunk_user_count">?</td></tr>
+<tr><th>Empfangen:</th><td id="freifunk_rx_bytes">?</td></tr>
+<tr><th>Gesendet:</th><td id="freifunk_tx_bytes">?</td></tr>
+<tr><th>IPv4 Adressen:</th><td id="freifunk_addr4">?</td></tr>
+<tr><th>IPv6 Adressen:</th><td id="freifunk_addr6">?</td></tr>
+</table>
 </fieldset>
 
 <fieldset>
 <legend id="wan">Netz: WAN</legend>
-<div><label>Internet Vorhanden: </label><span id="has_internet">?</span></div>
-<div><label>Empfangen: </label><span id="wan_rx_bytes">?</span> </div>
-<div><label>Gesendet: </label><span id="wan_tx_bytes">?</span></div>
-<div><label>IPv4 Adressen: </label><span id="wan_addr4">?</span></div>
-<div><label>IPv6 Adressen: </label><span id="wan_addr6">?</span></div>
+<table class="formtable">
+<tr><th>Internet vorhanden:</th><td id="has_internet">?</td></tr>
+<tr><th>Empfangen:</th><td id="wan_rx_bytes">?</td></tr>
+<tr><th>Gesendet:</th><td id="wan_tx_bytes">?</td></tr>
+<tr><th>IPv4 Adressen:</th><td id="wan_addr4">?</td></tr>
+<tr><th>IPv6 Adressen:</th><td id="wan_addr6">?</td></tr>
+</table>
 </fieldset>
 
 <fieldset>
 <legend id="software">Software</legend>
-<div><label>Firmware Version: </label><span id="firmware_version">?</span></div>
-<div><label>OpenWrt Version: </label><span id="openwrt_version">?</span></div>
-<div><label>Batman-Adv Version: </label><span id="batman_version">?</span></div>
-<div><label>Fastd Version: </label><span id="fastd_version">?</span></div>
+<table class="formtable">
+<tr><th>Firmware Version:</th><td id="firmware_version">?</td></tr>
+<tr><th>OpenWrt Version:</th><td id="openwrt_version">?</td></tr>
+<tr><th>Batman-Adv Version:</th><td id="batman_version">?</td></tr>
+<tr><th>Fastd Version:</th><td id="fastd_version">?</td></tr>
+</table>
 </fieldset>
+</div>
+</div>
 
 </body>
 </html>

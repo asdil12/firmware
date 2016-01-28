@@ -26,9 +26,6 @@ label {
 }
 
 .pure-button {
-	background-color: #1f8dd6;
-	color: white;
-	padding: 0.5em 2em;
 	border-radius: 5px;
 }
 
@@ -63,10 +60,13 @@ a.pure-button-primary {
 	color: #6FBEF3;
 }
 
-.home-menu li a:hover,
-.home-menu li a:focus {
+.home-menu li a:hover {
 	background: none;
 	color: #AECFE5;
+}
+
+.home-menu li a:focus {
+	background: none;
 }
 
 .home-menu {
@@ -75,4 +75,50 @@ a.pure-button-primary {
 
 .home-menu ul {
 	float: right;
+}
+
+li { list-style-type: none; }
+
+.pure-form-aligned div.pure-control-group > label {
+	width: 11.5em;
+}
+
+fieldset > legend {
+	font-weight: bold;
+}
+
+span > label {
+	width: auto !important;
+	margin: 0 1em 0 3px !important;
+}
+
+.formtable th {
+	padding-right: 5px;
+	text-align: right;
+	vertical-align: top;
+	color: #34495e;
+	font-weight: normal;
+}
+
+.formtable ul {
+	margin: 0;
+	padding: 0;
+}
+
+@media(max-width:1070px) {
+	.pure-menu li a {
+		padding: 5px 10px;
+	}
+}
+
+@media(max-width:930px) {
+	.home-menu.pure-menu > a.pure-menu-heading {
+		display: none;
+	}
+}
+
+@media(max-width:700px) {
+	.pure-menu li a {
+		padding: 5px 5px;
+	}
 }
