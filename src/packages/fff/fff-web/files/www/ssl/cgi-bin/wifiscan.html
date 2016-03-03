@@ -1,0 +1,52 @@
+#!/usr/bin/haserl
+
+<%in /www/ssl/cgi-bin/header %>
+<table style="width: 100%">
+<tr><td>
+<fieldset>
+	<legend>Wifi Scan</legend>
+	<table class="wifitable">
+		<tr>
+			<th>Name</th>
+			<th>Kanal</th>
+			<th>Signal</th>
+			<th>Typ</th>
+		</tr>
+
+<%
+IFSOLD="$IFS"
+IFS="
+"
+for line in $(iw dev w2mesh scan 2> /dev/null | grep '^BSS \|SSID\|set: channel\|signal\|capability\|MESH ID') ; do
+	line=$(echo "$line" | tr -d '\n')
+	if echo "$line" | grep -q "^BSS " && [ "$ssid" != "" ] ; then
+		echo "<tr><td>${ssid}</td><td>${channel}</td><td>${signal}</td><td>${type}</td></tr>"
+		ssid="???"
+		channel="???"
+		signal="???"
+		type="???"
+	elif echo "$line" | grep -q "SSID:" ; then
+		ssid=$(echo "$line"| sed 's/\tSSID: \(.*\)$/\1/')
+	elif echo "$line" | grep -q "signal:" ; then
+		signal=$(echo "$line"| sed 's/\tsignal: \(.*\)$/\1/')
+	elif echo "$line" | grep -q "channel " ; then
+		channel=$(echo "$line"| sed 's/.* channel \(.*\)$/\1/')
+	elif echo "$line" | grep -q "capability:" ; then
+		if echo "$line" | grep -q "ESS" ; then
+			type="Access Point"
+		elif echo "$line" | grep -q "IBSS" ; then
+			type="AdHoc"
+		else
+			type="???"
+		fi
+	fi
+done
+IFS="$IFSOLD"
+echo "<tr><td>${ssid}</td><td>${channel}</td><td>${signal}</td><td>${type}</td></tr>"
+%>
+	</table>
+</fieldset>
+</td></tr>
+</table>
+
+<%in /www/ssl/cgi-bin/footer %>
